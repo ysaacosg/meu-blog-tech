@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TechVerse | Explore o Futuro</title>
+
+    <style>
+        /* ===== CONFIGURAÇÕES GERAIS ===== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: #080D18;
+            --surface: #101A2B;
+            --surface-light: #16243A;
+            --primary: #38BDF8;
+            --secondary: #818CF8;
+            --text: #F1F5F9;
+            --muted: #94A3B8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== NAVEGAÇÃO ===== */
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .status {
+            color: #4ADE80;
+            font-size: 12px;
+            border: 1px solid #245B45;
+            padding: 7px 13px;
+            border-radius: 20px;
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        /* ===== HERO ===== */
+
+        .hero {
+            padding: 75px 45px;
+            border: 1px solid #24354D;
+            border-radius: 22px;
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(56, 189, 248, 0.18),
+                    transparent 35%
+                ),
+                linear-gradient(135deg, #14243B, #0B1423);
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tag {
+            display: inline-block;
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.10);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            max-width: 650px;
+            font-size: clamp(36px, 6vw, 65px);
+            line-height: 1.12;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 580px;
+            color: var(--muted);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--primary);
+            color: #07111E;
+            padding: 13px 23px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #7DD3FC;
+            transform: translateY(-3px);
+        }
+
+        /* ===== SEÇÃO DE INFORMAÇÕES ===== */
+
+        .section-title {
+            margin: 65px 0 25px;
+        }
+
+        .section-title small {
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 11px;
+        }
+
+        .section-title h2 {
+            font-size: 29px;
+            margin-top: 5px;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .about-card {
+            background: var(--surface);
+            border: 1px solid #24354D;
+            border-radius: 15px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .about-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .about-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .about-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ===== ARTIGO ===== */
+
+        .article {
+            background: var(--surface);
+            border: 1px solid #24354D;
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 25px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            background: var(--surface-light);
+        }
+
+        .category {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .article h2 {
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        .author {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .article p {
+            color: #B7C4D6;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .article h3 {
+            color: var(--primary);
+            margin: 25px 0 10px;
+        }
+
+        .article-footer {
+            border-top: 1px solid #29384D;
+            margin-top: 25px;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* ===== RODAPÉ ===== */
+
+        footer {
+            margin-top: 90px;
+            padding: 35px 20px;
+            text-align: center;
+            border-top: 1px solid #24354D;
+            background: #0B1321;
+        }
+
+        footer h2 {
+            font-size: 23px;
+        }
+
+        footer h2 span {
+            color: var(--primary);
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 20px;
+                flex-wrap: wrap;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            main {
+                padding: 18px;
+            }
+
+            .hero {
+                padding: 45px 25px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .article {
+                padding: 20px;
+            }
+
+            .article h2 {
+                font-size: 24px;
+            }
+
+            .article-image {
+                height: 190px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGAÇÃO -->
+    <header>
+
+        <a href="#" class="logo">
+            TECH<span>VERSE.</span>
+        </a>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#artigos">Artigos</a>
+        </nav>
+
+        <div class="status">
+            ● Online
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- APRESENTAÇÃO -->
+        <section class="hero" id="inicio">
+
+            <span class="tag">
+                TECNOLOGIA • INOVAÇÃO • FUTURO
+            </span>
+
+            <h1>
+                O futuro começa com uma
+                <span>ideia.</span>
+            </h1>
+
+            <p>
+                Explore o universo da tecnologia, descubra
+                novas possibilidades e acompanhe as
+                transformações que estão moldando o mundo.
+            </p>
+
+            <a href="#artigos" class="button">
+                Explorar conteúdo →
+            </a>
+
+        </section>
+
+
+        <!-- SOBRE -->
+        <section id="sobre">
+
+            <div class="section-title">
+                <small>CONHEÇA O PROJETO</small>
+                <h2>Além da tecnologia.</h2>
+            </div>
+
+            <div class="about">
+
+                <div class="about-card">
+                    <h3>01. Conhecimento</h3>
+
+                    <p>
+                        Um espaço dedicado ao aprendizado,
+                        à descoberta e ao compartilhamento
+                        de informações sobre o mundo digital.
+                    </p>
+                </div>
+
+                <div class="about-card">
+                    <h3>02. Inovação</h3>
+
+                    <p>
+                        Acompanhe tendências, novas
+                        tecnologias e ideias que podem
+                        transformar o nosso futuro.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ARTIGO -->
+        <section id="artigos">
+
+            <div class="section-title">
+                <small>PUBLICAÇÕES</small>
+                <h2>Último artigo.</h2>
+            </div>
+
+            <article class="article">
+
+                <img
+                    src="imagem-blog.jpg"
+                    alt="Ilustração representando tecnologia,
+                    inteligência artificial e conhecimento digital."
+                    class="article-image"
+                >
+
+                <span class="category">
+                    Tecnologia e programação
+                </span>
+
+                <h2>Meu primeiro post: o mundo digital</h2>
+
+                <div class="author">
+                    Por: Ysaac Oliveira dos Santos Gomes
+                    • 15 de novembro de 2026
+                </div>
+
+                <p>
+                    A tecnologia está cada vez mais presente
+                    em nossas vidas. Ela transforma a maneira
+                    como estudamos, trabalhamos e nos
+                    comunicamos.
+                </p>
+
+                <h3>A evolução da tecnologia</h3>
+
+                <p>
+                    Vivemos em uma época em que a inovação
+                    acontece rapidamente. A inteligência
+                    artificial, a automação e a programação
+                    estão criando novas oportunidades e
+                    mudando diferentes setores da sociedade.
+                </p>
+
+                <h3>Por que aprender programação?</h3>
+
+                <p>
+                    Aprender programação é muito mais do que
+                    escrever códigos. É desenvolver o
+                    raciocínio lógico, resolver problemas e
+                    transformar ideias em projetos reais.
+                </p>
+
+                <p>
+                    Neste blog, pretendo compartilhar
+                    conhecimentos sobre informática,
+                    inteligência artificial, programação
+                    e inovação tecnológica.
+                </p>
+
+                <div class="article-footer">
+                    TECHVERSE. — Conhecimento que conecta
+                    pessoas ao futuro.
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <h2>TECH<span>VERSE.</span></h2>
+
+        <p>
+            Tecnologia, conhecimento e inovação.
+        </p>
+
+        <p>
+            © 2026 • Desenvolvido por Ysaac Oliveira.
+        </p>
+
+    </footer>
+
+</body>
+</html>
